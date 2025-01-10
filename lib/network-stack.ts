@@ -12,16 +12,23 @@ export class NetworkStack extends cdk.Stack {
     super(scope, id, props);
 
     this.vpc = new ec2.Vpc(this, `${configuration.COMMON.project}-vpc`, {
+      ipAddresses: ec2.IpAddresses.cidr('10.0.0.0/16'),
       vpcName: configuration.NETWORKING.vpcName,
       maxAzs: 2,
       subnetConfiguration: [
         {
           name: 'public',
-          subnetType: ec2.SubnetType.PUBLIC,
+          subnetType: ec2.SubnetType.PUBLIC
         },
         {
-          name: 'private',
-          subnetType: configuration.NETWORKING.enableNetworkEgress ? ec2.SubnetType.PRIVATE_WITH_EGRESS : ec2.SubnetType.PRIVATE_ISOLATED,
+          name: 'private-with-nat',
+          subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+          cidrMask: 24
+        },
+        {
+          name: 'private-isolated',
+          subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+          cidrMask: 24
         }
       ],
       natGateways: configuration.NETWORKING.enableNetworkEgress ? 1 : 0,
