@@ -40,5 +40,10 @@ export class NetworkStack extends cdk.Stack {
       vpc: this.vpc,
       allowAllOutbound: true,
     });
+
+    // TODO Remove it
+    this.securityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.allTraffic(), 'Allow all ipv4 inbound traffic');
+    // TODO Remove it
+    this.securityGroup.addIngressRule(ec2.Peer.anyIpv6(), ec2.Port.allTraffic(), 'Allow all ipv6 inbound traffic');
   }
 }
