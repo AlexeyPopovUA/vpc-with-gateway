@@ -32,6 +32,8 @@ export class NetworkStack extends cdk.Stack {
         }
       ],
       natGateways: configuration.NETWORKING.enableNetworkEgress ? 1 : 0,
+      enableDnsHostnames: true,
+      enableDnsSupport: true
     });
 
     // security group with all outbound traffic allowed
