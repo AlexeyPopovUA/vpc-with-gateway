@@ -10,13 +10,13 @@
     "update-dependencies": "npx npm-check-updates -u --packageFile package.json"
   },
   "devDependencies": {
-    "@types/node": "^22.9.3",
-    "aws-cdk": "2.170.0",
+    "@types/node": "^22.13.4",
+    "aws-cdk": "2.178.2",
     "ts-node": "^10.9.2",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.3"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.170.0",
+    "aws-cdk-lib": "2.178.2",
     "constructs": "^10.4.2",
     "source-map-support": "^0.5.21"
   }
