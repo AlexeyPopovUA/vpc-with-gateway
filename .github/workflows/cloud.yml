@@ -6,6 +6,7 @@ on:
       - '**'
     paths:
       - '**'
+  workflow_dispatch:
 
 env:
   DEFAULT_BRANCH: main
